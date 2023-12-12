@@ -12,7 +12,7 @@ def call('component') {
             stage('Lint Checks'){
                 steps {
                     script {
-                        nodejs.lintChecks("component")
+                        nodejs.lintChecks()
                     }
                 }
             }
