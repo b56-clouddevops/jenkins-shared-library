@@ -13,7 +13,6 @@ def call() {
                 steps {
                     script {
                         lintChecks()
-                        // lintChecks()
                     }
                 }
             }
