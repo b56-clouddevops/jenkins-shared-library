@@ -1,11 +1,11 @@
-def lintChecks('component') {
-    sh "echo ***** Starting Style Checks for ${component} *****"
+def lintChecks() {
+    sh "echo ***** Starting Style Checks *****"
     sh "npm install jslint"
     sh "node_modules/jslint/bin/jslint.js server.js || true"
     sh "echo ***** Style Checks Are Completed *****"
 }
 
-def call('component') {
+def call() {
     pipeline {
         agent any
         stages {
