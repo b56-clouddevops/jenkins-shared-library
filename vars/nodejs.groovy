@@ -12,7 +12,8 @@ def call('component') {
             stage('Lint Checks'){
                 steps {
                     script {
-                        lintChecks('component')
+                        // lintChecks('component')
+                        lintChecks()
                     }
                 }
             }
