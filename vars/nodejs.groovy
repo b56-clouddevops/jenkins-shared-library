@@ -1,8 +1,8 @@
-def lintChecks('component') {
-    sh "echo ***** Starting Style Checks ${component} *****"
+def lintChecks() {
+    sh "echo ***** Starting Style Checks ${COMPONENT} *****"
     sh "npm install jslint"
     sh "node_modules/jslint/bin/jslint.js server.js || true"
-    sh "echo ***** Style Checks Are Completed *****"
+    sh "echo ***** Style Checks Are Completed for ${COMPONENT} *****"
 }
 
 def call() {
@@ -12,7 +12,7 @@ def call() {
             stage('Lint Checks'){
                 steps {
                     script {
-                        lintChecks('component')
+                        lintChecks()
                         // lintChecks()
                     }
                 }
