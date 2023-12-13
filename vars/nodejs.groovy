@@ -25,7 +25,9 @@ def call() {
             }
             stage('Static Code Analysis') {
                 steps {
-                    sh "echo Starting Static Code Analysis"
+                    script {
+                        sonarChecks()
+                    }
                 }
             }
         }
