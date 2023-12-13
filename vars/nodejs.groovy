@@ -30,6 +30,12 @@ def call() {
                     }
                 }
             }
+            stage('Get the Sonar Result') {
+                steps {
+                    sh "curl https://gitlab.com/thecloudcareers/opensource/-/raw/master/lab-tools/sonar-scanner/quality-gate > gates.sh"
+                    sh "./gates.sh admin password 172.31.45.101 ${COMPONENT}"
+                }
+            }
             stage('Unit Testing') {
                 steps {
                     echo "Testing in Progress"
