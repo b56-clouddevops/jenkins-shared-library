@@ -60,3 +60,11 @@ The directory structure of a Shared Library repository is as follows:
     4) Identifes the duplicate patterns in the code.
     5) Overall Code Quality Standard.
 ```
+
+### SonarQube can be utilized in any of the 2 ways 
+
+```
+    1) Create your own server and set-up sonarQube on the top of that server ( Paid tool : 1 month : In free version, you'd get embedded Portgress DB ) 
+
+    2) You can use SAS offering ( You don't have to host anything locally )
+```
