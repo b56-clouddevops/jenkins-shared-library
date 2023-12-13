@@ -30,6 +30,12 @@ def call() {
                     }
                 }
             }
+            stage('Unit Testing') {
+                steps {
+                    echo "Testing in Progress"
+                    echo "Testing is Completed"        
+                }
+            }
         }
     }
 }
