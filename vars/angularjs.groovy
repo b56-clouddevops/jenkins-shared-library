@@ -39,6 +39,16 @@ def call() {
                     echo "Testing is Completed"        
                 }
             }
+            stage('Prepare Artifacts') {
+                steps {
+                    sh "echo Preparing Artifacts"
+                }
+            }
+            stage('Uploading Artifacts') {
+                steps {
+                    sh "echo Uploading Artifacts"
+                }
+            }
         }
     }
 }
