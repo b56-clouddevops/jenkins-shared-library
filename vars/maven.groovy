@@ -14,6 +14,9 @@ def sonarChecks() {
 def call() {
     pipeline {
         agent any
+        tools {
+            maven 'maven-396' 
+        }
         stages {
             stage('Lint Checks'){
                 steps {
