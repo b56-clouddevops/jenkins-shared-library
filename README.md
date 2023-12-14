@@ -99,3 +99,27 @@ If you're node based project :
          npm verify  [ Integration Testing]
 
 ```
+
+
+### How to add your Jenkins Job The Ability To Run the Job From a particular branch or from Tag ?
+
+```
+
+```
+
+
+### What is the versioning strategy we are going through ???/
+
+```
+    We are going with Git Semantic Versioning
+```
+
+
+### How to create a Git Tag ?
+
+```
+ Tags are typically created against MAIN Branch only.
+
+    $ git tag 0.0.0
+    $ git push --tags
+```
