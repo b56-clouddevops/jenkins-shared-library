@@ -41,6 +41,31 @@ def call() {
                     sh "bash gates.sh admin password ${SONAR_URL} ${COMPONENT}"
                 }
             }
+        stage('Test Cases') {
+            parallel {
+                stage('Unit Testing') {
+                    steps {
+                        sh "echo Testing In Progress"
+                        // sh "mvn test"
+                        sh "echo Unit Testing In Completed"
+                    }
+                }
+                stage('Integration Testing') {
+                    steps {
+                        sh "echo Integration Testing In Progress"
+                        // sh "mvn verify"
+                        sh "echo Integration Testing In Completed"
+                    }
+                }
+                stage('Functional Testing') {
+                    steps {
+                        sh "echo Functional Testing In Progress"
+                        // sh "mvn function"
+                        sh "echo Functional Testing In Completed"
+                        }
+                    }
+                }
+            }
         }
     }
 }

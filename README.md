@@ -87,3 +87,15 @@ Here are some of the most important phases in the default build lifecycle:
     install: install the package to a local repository
     deploy: copy the package to the remote repository
 ```
+
+
+### How to do Unit Testing & Ingeration Testing
+
+```
+Both these test cases are typically placed in the code where you applications is hosted. And can be called by the same build tool using test or verify.
+
+If you're node based project :
+    ex : npm test    [ Unit Testing ]
+         npm verify  [ Integration Testing]
+
+```
