@@ -68,3 +68,22 @@ The directory structure of a Shared Library repository is as follows:
 
     2) You can use SAS offering ( You don't have to host anything locally )
 ```
+
+
+### Maven Goals
+
+A Maven phase represents a stage in the Maven build lifecycle. Each phase is responsible for a specific task.
+
+Here are some of the most important phases in the default build lifecycle:
+
+
+```
+    validate: check if all information necessary for the build is available
+    compile: compile the source code
+    test-compile: compile the test source code
+    test: run unit tests
+    package: package compiled source code into the distributable format (jar, war, …)
+    integration-test: process and deploy the package if needed to run integration tests
+    install: install the package to a local repository
+    deploy: copy the package to the remote repository
+```
