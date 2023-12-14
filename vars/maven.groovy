@@ -4,6 +4,14 @@ def lintChecks() {
     sh "echo ***** Style Checks Are Completed for ${COMPONENT} *****"
 }
 
+def sonarChecks() {
+     sh '''
+     sonar-scanner -Dsonar.host.url=http://172.31.45.101:9000 -Dsonar.java.binaries=./target/ -Dsonar.projectKey=${COMPONENT} -Dsonar.login=admin -Dsonar.password=password
+
+     '''
+}
+
+
 def call() {
     pipeline {
         agent any
@@ -27,6 +35,7 @@ def call() {
             stage('Static Code Analysis') {
                 steps {
                     script {
+                        env.ARGS="-Dsonar.java.binaries=./target/"
                         common.sonarChecks()
                     }
                 }
