@@ -37,6 +37,7 @@ def call() {
             parallel {
                 stage('Unit Testing') {
                     steps {
+                        sh "env"
                         sh "echo Unit Testing In Progress"
                         // sh "npm test"
                         sh "echo Unit Testing In Completed"
