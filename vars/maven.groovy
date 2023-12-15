@@ -23,6 +23,7 @@ def call() {
             }
             stage('Compiling Java Code ') {
                 steps {
+                    sh "env"
                     sh "mvn clean compile"
                     sh "ls -ltr target/"
                 }
