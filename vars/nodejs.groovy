@@ -61,6 +61,15 @@ def call() {
                     }
                 }
             }
+            stage('Checking Artifacts Avaiability On Nexus') {
+                when { expression { env.TAG_NAME != null } }
+                steps {
+                    script {
+                         env.UPLOAD_STATUS = sh(script: "curl http://${NEXUS_URL}:8081/service/rest/repository/browse/${COMPONENT}/ | grep ${COMPONENT}-${TAG_NAME}.zip", returnStdout: true)
+                         print UPLOAD_STATUS
+                    }
+                }
+            }
             stage('Prepare Artifacts') {
                 when { expression { env.TAG_NAME != null } }
                 steps {
@@ -82,4 +91,8 @@ def call() {
         }
     }
 }
+
+
+
+
 

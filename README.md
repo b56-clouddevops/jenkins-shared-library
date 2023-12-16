@@ -126,4 +126,10 @@ If you're node based project :
 
 
 
-### 
+### When Artifacts has to be prepared and when they are supposed to be uploaded ??? 
+
+```
+    1) Only then the TAG_NAME or verison of the artifact that you're trying to upload is not available on Nexus.
+    2) That means, even before you prepare the ARTIFACT, let's have a stage to validate against NEXUS on the availability of that particular verison.
+    3) We need to ensure that BUILD and UPLOAD of artifacts will happen in the event of unavailability of that verison on NEXUS.
+```
