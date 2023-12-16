@@ -61,8 +61,8 @@ def call() {
                 }
             }
             stage('Prepare Artifacts') {
+                when { expression { env.TAG_NAME != null } }
                 steps {
-                    when { expression { env.TAG_NAME != null } }
                     sh ''' 
                          npm install 
                          ls -ltr 
@@ -72,8 +72,8 @@ def call() {
                 }
             }
             stage('Uploading Artifacts') {
+                when { expression { env.TAG_NAME != null } }
                 steps {
-                    when { expression { env.TAG_NAME != null } }
                     sh "echo Uploading Artifacts"
                 }
             }
