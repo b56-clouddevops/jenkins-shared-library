@@ -70,22 +70,32 @@ def artifacts() {
           print UPLOAD_STATUS
      }
 
-     stage(Generating The Artifacts) {
-          if(env.APP_TYPE == "nodejs") {
-               sh "npm install"
-               sh "zip ${COMPONENT}-${TAG_NAME}.zip node_modules server.js"
+     if(env.UPLOAD_STATUS == "") {
+          stage(Generating The Artifacts) {
+               if(env.APP_TYPE == "nodejs") {
+                    sh "npm install"
+                    sh "zip ${COMPONENT}-${TAG_NAME}.zip node_modules server.js"
+               }
+               else if(env.APP_TYPE == "maven") {
+                    sh "mvn clean package"
+                    sh "mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar"
+                    sh "zip -r ${COMPONENT}-${TAG_NAME}".zip ${COMPONENT}.jar"
+               }
+               else if(env.APP_TYPE == "payment") {
+                    sh "zip -r ${COMPONENT}-${TAG_NAME}.zip *.py  *.ini requirements.txt"
+               }
+               else {
+                    sh "cd static/""
+                    sh "zip -r ../${COMPONENT}-${TAG_NAME}.zip *"
+               }
           }
-          else if(env.APP_TYPE == "maven") {
-               sh "mvn clean package"
-               sh "mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar"
-               sh "zip -r ${COMPONENT}-${TAG_NAME}".zip ${COMPONENT}.jar"
-          }
-          else if(env.APP_TYPE == "payment") {
-               sh "zip -r ${COMPONENT}-${TAG_NAME}.zip *.py  *.ini requirements.txt"
-          }
-          else {
-               sh "cd static/""
-               sh "zip -r ../${COMPONENT}-${TAG_NAME}.zip *"
+
+          stage('Uploading the artifacts') {
+               withCredentials([usernamePassword(credentialsId: 'NEXUS', passwordVariable: 'NEXUS_PASSWORD', usernameVariable: 'NEXUS_USERNAME')]) {
+                    sh "echo Uploading ${COMPONENT} artifacts to Nexus"
+                    sh "curl -f -v -u ${NEXUS_USERNAME}:${NEXUS_PASSWORD} --upload-file ${COMPONENT}-${TAG_NAME}.zip  http://172.31.34.215:8081/repository/${COMPONENT}/${COMPONENT}-${TAG_NAME}.zip"
+                    sh "echo Upload Completed"
+               }
           }
      }
 }
