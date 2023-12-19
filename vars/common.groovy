@@ -83,6 +83,7 @@ def artifacts() {
                }
                else if(env.APP_TYPE == "payment") {
                     sh "zip -r ${COMPONENT}-${TAG_NAME}.zip *.py  *.ini requirements.txt"
+                    sh "ls -ltr"
                }
                else if(APP_TYPE == "angularjs") {
                     sh "cd static/"
