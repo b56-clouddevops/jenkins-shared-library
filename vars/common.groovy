@@ -81,7 +81,7 @@ def artifacts() {
                     sh "mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar"
                     sh "zip -r ${COMPONENT}-${TAG_NAME}.zip ${COMPONENT}.jar"
                }
-               else if(env.APP_TYPE == "payment") {
+               else if(env.APP_TYPE == "python") {
                     sh "zip -r ${COMPONENT}-${TAG_NAME}.zip *.py  *.ini requirements.txt"
                     sh "ls -ltr"
                }
