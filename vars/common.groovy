@@ -66,7 +66,7 @@ def testCases() {
 
 def artifacts() {
      stage('Checking Artifact Release On Nexys') {
-          env.UPLOAD_STATUS = sh(returnStdout: true, script: "curl http://${NEXUS_URL}:8081/service/rest/repository/browse/${COMPONENT}/ | grep ${COMPONENT}-${TAG_NAME}.zip || true")              print UPLOAD_STATUS         
+          env.UPLOAD_STATUS = sh(returnStdout: true, script: "curl http://${NEXUS_URL}:8081/service/rest/repository/browse/${COMPONENT}/ | grep ${COMPONENT}-${TAG_NAME}.zip || true")       
           print UPLOAD_STATUS
      }
 
