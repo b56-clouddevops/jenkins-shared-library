@@ -85,7 +85,7 @@ def artifacts() {
                     sh "zip -r ${COMPONENT}-${TAG_NAME}.zip *.py  *.ini requirements.txt"
                }
                else {
-                    sh "cd static/""
+                    sh "cd static/"
                     sh "zip -r ../${COMPONENT}-${TAG_NAME}.zip *"
                }
           }
