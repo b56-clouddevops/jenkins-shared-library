@@ -41,3 +41,24 @@ def lintChecks() {
           }
      }
 }
+
+
+testCases() {
+    stage('Test Cases') {
+        def stages = [:]
+
+        stages["Unit Testing"] = {
+               echo "Unit Testing In Progress"
+               echo "Unit Testing Is Completed"
+        }
+        stages["Intergration Testing"] = {
+               echo "Intergration Testing In Progress"
+               echo "Intergration Testing Is Completed"
+        }
+        stages["Functional Testing"] = {
+               echo "Functional Testing In Progress"
+               echo "Functional Testing Is Completed"
+        }
+        parallel(stages)
+    }
+}
