@@ -89,7 +89,7 @@ def artifacts() {
                     sh "zip -r ../${COMPONENT}-${TAG_NAME}.zip *"
                }
                else {
-                    sh "echo Selected Component Type Doesn't Exist"
+                    sh "echo Selected Component Type Does Not Exist"
                }
           }
 
