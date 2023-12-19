@@ -5,3 +5,37 @@ def sonarChecks() {
      echo sonar Checks Completed
      '''
 }
+
+def lintChecks() {
+     stage('lint checks') {
+          if(env.APP_TYPE == "maven") {
+               sh '''
+                    echo ***** Starting Style Checks for ${COMPONENT} *****
+                    mvn checkstyle:check || true
+                    echo ***** Style Checks Are Completed for ${COMPONENT} *****
+               '''
+          }
+          else if(env.APP_TYPE == "node") {
+               sh '''
+                    echo ***** Starting Style Checks for ${COMPONENT} *****
+                    npm install jslint
+                    node_modules/jslint/bin/jslint.js server.js || true
+                    echo ***** Style Checks Are Completed for ${COMPONENT} *****
+               '''
+          }
+          else if(env.APP_TYPE == "python") {
+               sh '''
+                    echo ***** Starting Style Checks for ${COMPONENT} *****
+                    pip3 install pylint
+                    pytlint *.py || true
+                    echo ***** Style Checks Are Completed for ${COMPONENT} *****
+               '''
+          }
+          else {
+               sh '''
+                    echo ***** Starting Style Checks for ${COMPONENT} *****
+                    echo ***** Style Checks Are Completed for ${COMPONENT} *****
+               '''
+          }
+     }
+}

@@ -1,10 +1,3 @@
-def lintChecks() {
-    sh "echo ***** Starting Style Checks for ${COMPONENT} *****"
-    sh "npm install jslint"
-    sh "node_modules/jslint/bin/jslint.js server.js || true"
-    sh "echo ***** Style Checks Are Completed for ${COMPONENT} *****"
-}
-
 def call() {
     pipeline {
         agent any
@@ -13,7 +6,6 @@ def call() {
             NEXUS = credentials('NEXUS')
             SONAR_URL = "172.31.45.101"
             NEXUS_URL = "172.31.34.215"
-
         }
         stages {
             stage('Lint Checks'){
