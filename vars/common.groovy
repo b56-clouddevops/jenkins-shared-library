@@ -86,8 +86,7 @@ def artifacts() {
                     sh "zip -r ${COMPONENT}-${TAG_NAME}.zip ${COMPONENT}.jar"
                }
                else if(env.APP_TYPE == "angularjs") {
-                    sh "cd static/"
-                    sh "zip -r ../${COMPONENT}-${TAG_NAME}.zip *"
+                    sh "zip -r static/${COMPONENT}-${TAG_NAME}.zip *"
                }
                else {
                     sh "echo Selected Component Type Does Not Exist"
