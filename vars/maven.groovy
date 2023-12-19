@@ -4,6 +4,7 @@ def call() {
         env.ARGS="-Dsonar.java.binaries=./target/"
         common.sonarChecks()
         common.testCases()
+        common.artifacts()
     }
 }
 
