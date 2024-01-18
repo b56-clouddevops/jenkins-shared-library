@@ -3,6 +3,7 @@ def call() {
         parameters([
             choice(choices: 'dev\nprod', description: 'Select the environment', name: "ENV"),
             choice(choices: 'apply\ndestroy', description: 'Chose an action', name: "ACTION"),
+            string(choices: 'APP_VERSION', description: 'Enter Your Backend Application Version', name: "APP_VERSION")
         ]),
     ])
     node {
