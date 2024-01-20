@@ -17,24 +17,24 @@ def call() {
                        terraform apply -var-file=env-${ENV}/${ENV}.tfvars -auto-approve
                 '''             
             }
-            stage('Creating LoadBalancerts') {
-                git branch: 'main', url: 'https://github.com/b56-clouddevops/terraform-loadbalancerts.git'
-                sh '''
-                       terrafile -f env-${ENV}/Terrafile
-                       terraform init -backend-config=env-${ENV}/${ENV}-backend.tfvars  -reconfigure
-                       terraform plan -var-file=env-${ENV}/${ENV}.tfvars
-                       terraform apply -var-file=env-${ENV}/${ENV}.tfvars -auto-approve
-                '''             
-            }
-            stage('Creating Databases') {
-                git branch: 'main', url: 'https://github.com/b56-clouddevops/terraform-databases.git'
-                sh '''
-                       terrafile -f env-${ENV}/Terrafile
-                       terraform init -backend-config=env-${ENV}/${ENV}-backend.tfvars  -reconfigure
-                       terraform plan -var-file=env-${ENV}/${ENV}.tfvars
-                       terraform apply -var-file=env-${ENV}/${ENV}.tfvars -auto-approve
-                '''             
-            }
+            // stage('Creating LoadBalancerts') {
+            //     git branch: 'main', url: 'https://github.com/b56-clouddevops/terraform-loadbalancerts.git'
+            //     sh '''
+            //            terrafile -f env-${ENV}/Terrafile
+            //            terraform init -backend-config=env-${ENV}/${ENV}-backend.tfvars  -reconfigure
+            //            terraform plan -var-file=env-${ENV}/${ENV}.tfvars
+            //            terraform apply -var-file=env-${ENV}/${ENV}.tfvars -auto-approve
+            //     '''             
+            // }
+            // stage('Creating Databases') {
+            //     git branch: 'main', url: 'https://github.com/b56-clouddevops/terraform-databases.git'
+            //     sh '''
+            //            terrafile -f env-${ENV}/Terrafile
+            //            terraform init -backend-config=env-${ENV}/${ENV}-backend.tfvars  -reconfigure
+            //            terraform plan -var-file=env-${ENV}/${ENV}.tfvars
+            //            terraform apply -var-file=env-${ENV}/${ENV}.tfvars -auto-approve
+            //     '''             
+            // }
         }
     }
 }
