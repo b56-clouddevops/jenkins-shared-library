@@ -7,7 +7,7 @@ def call() {
     node {
         ansiColor('xterm') {
             // git branch: 'main', url: 'https://github.com/b56-clouddevops/terraform-vpc.git'
-            stage('Creating Network') {
+            stage('Creatingggg Network') {
                 git branch: 'main', url: 'https://github.com/b56-clouddevops/terraform-vpc.git'
                 sh '''
                        terrafile -f env-${ENV}/Terrafile
