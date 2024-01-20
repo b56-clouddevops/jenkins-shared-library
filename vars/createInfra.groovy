@@ -12,7 +12,7 @@ def call() {
                 sh ''' 
                        rm -rf .terraform
                        terrafile -f env-${ENV}/Terrafile
-                       terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars
+                       terraform init -backend-config=env-${ENV}/${ENV}-backend.tfvars
                        terraform plan -var-file=env-${ENV}/${ENV}.tfvars
                        terraform apply -var-file=env-${ENV}/${ENV}.tfvars -auto-approve
                 '''             
@@ -21,7 +21,7 @@ def call() {
                 git branch: 'main', url: 'https://github.com/b56-clouddevops/terraform-loadbalancerts.git'
                 sh '''
                        terrafile -f env-${ENV}/Terrafile
-                       terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars  -reconfigure
+                       terraform init -backend-config=env-${ENV}/${ENV}-backend.tfvars  -reconfigure
                        terraform plan -var-file=env-${ENV}/${ENV}.tfvars
                        terraform apply -var-file=env-${ENV}/${ENV}.tfvars -auto-approve
                 '''             
@@ -30,7 +30,7 @@ def call() {
                 git branch: 'main', url: 'https://github.com/b56-clouddevops/terraform-databases.git'
                 sh '''
                        terrafile -f env-${ENV}/Terrafile
-                       terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars  -reconfigure
+                       terraform init -backend-config=env-${ENV}/${ENV}-backend.tfvars  -reconfigure
                        terraform plan -var-file=env-${ENV}/${ENV}.tfvars
                        terraform apply -var-file=env-${ENV}/${ENV}.tfvars -auto-approve
                 '''             
