@@ -27,7 +27,7 @@ def call() {
                 }
                 sh "wget https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem"
                 sh "docker build -t 355449129696.dkr.ecr.us-east-1.amazonaws.com/${COMPONENT}:${TAG_NAME} ."
-                sh "aws ecr get-login-password --region us-east-1 | sudo docker login --username AWS --password-stdin 355449129696.dkr.ecr.us-east-1.amazonaws.com"
+                sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 355449129696.dkr.ecr.us-east-1.amazonaws.com"
                 sh "docker push 355449129696.dkr.ecr.us-east-1.amazonaws.com/frontend:${TAG_NAME}"
         }
     }
